@@ -1,0 +1,84 @@
+baseURL: "https://huannono.github.io/"
+title: "huanNono 的笔记"
+locale: zh-CN
+defaultContentLanguage: zh
+hasCJKLanguage: true
+timeZone: Asia/Shanghai
+theme: PaperMod
+enableRobotsTXT: true
+cleanDestinationDir: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+pagination:
+  pagerSize: 8
+outputs:
+  home: [HTML, RSS, JSON]
+permalinks:
+  posts: /posts/:slug/
+taxonomies:
+  category: categories
+  tag: tags
+params:
+  description: "记录学习中的理解，也收集生活里的片段。"
+  author: huanNono
+  mainSections: [posts]
+  DateFormat: "2006年1月2日"
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowWordCount: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowShareButtons: false
+  ShowRssButtonInSectionTermList: true
+  comments: false
+  showtoc: true
+  tocopen: false
+  disableSpecial1stPost: true
+  homeInfoParams:
+    Title: "学习，也记录生活。"
+    Content: "这里是 huanNono 的个人笔记。记录问题、理解和实践，也留下日常生活里的片段。慢慢写，慢慢积累。"
+  socialIcons:
+    - name: github
+      url: https://github.com/huanNono
+    - name: rss
+      url: /index.xml
+  assets:
+    favicon: /favicon.svg
+    favicon16x16: /favicon.svg
+    favicon32x32: /favicon.svg
+    apple_touch_icon: /favicon.svg
+    safari_pinned_tab: /favicon.svg
+    disableHLJS: true
+  fuseOpts:
+    ignoreLocation: true
+    threshold: 0.35
+    minMatchCharLength: 1
+    keys: [title, summary, content]
+menu:
+  main:
+    - name: 学习
+      url: /categories/学习/
+      weight: 10
+    - name: 生活
+      url: /categories/生活/
+      weight: 20
+    - name: 归档
+      url: /archives/
+      weight: 30
+    - name: 搜索
+      url: /search/
+      weight: 40
+    - name: 关于我
+      url: /about/
+      weight: 50
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: false
+caches:
+  images:
+    dir: :cacheDir/images

@@ -1,0 +1,9 @@
+/public/
+/resources/
+/.hugo_build.lock
+/.cache/
+/private-notes/
+.DS_Store
+.env
+.env.*
+*.log
