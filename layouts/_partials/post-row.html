@@ -1,0 +1,11 @@
+{{ $level := .heading }}
+{{ with .page }}
+<article class="note-row">
+  <a class="note-link" href="{{ .RelPermalink }}">
+    <div class="note-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ range first 1 (.GetTerms "categories") }}<span class="meta-separator" aria-hidden="true">/</span><span>{{ .LinkTitle }}</span>{{ end }}{{ if .Draft }}<span>草稿</span>{{ end }}</div>
+    {{ if eq $level "h2" }}<h2>{{ .Title }}</h2>{{ else }}<h3>{{ .Title }}</h3>{{ end }}
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    <span class="note-arrow">{{ partial "arrow.html" . }}</span>
+  </a>
+</article>
+{{ end }}

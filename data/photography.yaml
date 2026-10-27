@@ -1,0 +1,3 @@
+# 将自己的照片放进 static/images/works/，再按 README 添加条目。
+# 列表最前面的四张会出现在首页；Works 页面显示全部。
+photos: []

@@ -1,0 +1,12 @@
+{{ define "main" }}
+<header class="collection-header"><p class="eyebrow">文字与记录</p><h1>Blog</h1><p>学习中的理解，生活里的片段。</p></header>
+<nav class="blog-filters" aria-label="文章分类">
+  <a href="{{ "posts/" | relURL }}" aria-current="page">全部文章</a>
+  {{ range site.Taxonomies.categories.Alphabetical }}<a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>{{ end }}
+  <a href="{{ "archives/" | relURL }}">归档</a>
+</nav>
+<div class="post-list">{{ range (.Paginate .RegularPages.ByDate.Reverse).Pages }}{{ partial "post-row.html" (dict "page" . "heading" "h2") }}{{ else }}<p class="empty-note">第一篇文字，正在路上。</p>{{ end }}</div>
+{{ if gt .Paginator.TotalPages 1 }}
+<nav class="page-footer" aria-label="文章分页"><div class="pagination">{{ if .Paginator.HasPrev }}<a class="prev" href="{{ .Paginator.Prev.URL | relURL }}">← 上一页</a>{{ end }}{{ if .Paginator.HasNext }}<a class="next" href="{{ .Paginator.Next.URL | relURL }}">下一页 →</a>{{ end }}</div></nav>
+{{ end }}
+{{ end }}

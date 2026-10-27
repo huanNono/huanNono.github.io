@@ -7,7 +7,7 @@ import json
 import sys
 
 root = Path(sys.argv[1] if len(sys.argv) > 1 else "public").resolve()
-expected = ["index.html", "about/index.html", "archives/index.html", "search/index.html", "categories/学习/index.html", "categories/生活/index.html", "index.json", "index.xml", "sitemap.xml", "404.html"]
+expected = ["index.html", "posts/index.html", "projects/index.html", "share/index.html", "links/index.html", "works/index.html", "about/index.html", "archives/index.html", "search/index.html", "categories/学习/index.html", "categories/生活/index.html", "index.json", "index.xml", "sitemap.xml", "404.html"]
 errors = ["Missing: " + p for p in expected if not (root / p).is_file()]
 class Links(HTMLParser):
     def handle_starttag(self, tag, attrs):

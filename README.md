@@ -1,6 +1,6 @@
-# huanNono 的笔记
+# YOYO
 
-Hugo + PaperMod 个人博客，预定地址：https://huannono.github.io/
+Hugo + PaperMod 个人博客，地址：https://huannono.github.io/
 
 ## 平时怎么写
 
@@ -35,13 +35,39 @@ draft: true
 私人文字放在 `private-notes/`（已忽略，不提交），公开前再移入 `content/posts/`。这个文件夹不会参与网站预览或构建。
 Git 也会保留已提交文件的历史；公开前检查文章和图片。
 
-## 修改网站
+## 修改首页
 
-- 名称、简介、菜单：`hugo.yaml`
-- 关于我：`content/about.md`
-- 排版小调整：`assets/css/extended/custom.css`
-- 固定主题版本：Git 子模块 `themes/PaperMod`，不要直接修改主题源码
-- 自动发布：`.github/workflows/hugo.yaml`
+首页结构：头像与昵称 → Profile 自我介绍 → 最近 4 篇文章 → Works 摄影 → 社交账号。
+
+- 网站标题、作者、菜单：`hugo.yaml`
+- 昵称、头像路径、自我介绍：`data/home.yaml`
+- 头像文件：`static/images/avatar.jpg`，初始头像来自现有 GitHub 账号
+- GitHub、X、Instagram、bilibili：`data/social.yaml`，填入自己的完整个人主页链接。空链接显示“待添加”，不会跳到错误页面
+- About、Project、Share、Links：`content/` 中对应的 Markdown 文件
+- 排版：`assets/css/extended/custom.css`
+- 首页与组件模板：`layouts/`；主题 `themes/PaperMod` 不需要修改
+
+`Posts` 自动取最近 4 篇文章；目前只有 2 篇，实际显示 2 篇。完整文章、分类、归档与搜索入口均保留。
+
+### 放入自己的摄影作品
+
+1. 将图片放到 `static/images/works/`（没有这个文件夹时创建它）。
+2. 编辑 `data/photography.yaml`，把 `photos: []` 换成如下结构，并使用真实文件名与说明：
+
+```yaml
+photos:
+  - src: /images/works/my-photo.jpg
+    title: 照片标题
+    alt: 画面内容的文字描述
+    detail: 地点或拍摄日期（可省略）
+    position: center # 可省略；如需调整缩略图构图可用 50% 30%
+```
+
+列表最前面的 4 张出现在首页，`/works/` 显示全部。点击照片可查看原图。没有照片时显示 4 个明确标注“照片待收录”的位置。发布前建议导出适合网页的尺寸，并检查照片隐私信息。
+
+### 技术说明
+
+首页使用 Hugo 的 `layouts/home.html` 覆盖模板（[Hugo 模板文档](https://gohugo.io/templates/types/)）。文章页、代码复制、搜索与主题切换仍使用 PaperMod。固定主题版本由 Git 子模块记录，自动发布在 `.github/workflows/hugo.yaml`。
 
 ## 本地命令
 
