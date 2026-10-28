@@ -1,0 +1,4 @@
+{{ if not site.Params.disableThemeToggle }}
+{{ $themeScript := resources.Get "js/theme.js" | minify }}
+<script>{{ $themeScript.Content | safeJS }}</script>
+{{ end }}

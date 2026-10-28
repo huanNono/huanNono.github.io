@@ -41,8 +41,24 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--site-accent); o
 .site-nav .menu a:hover, .site-nav .menu a[aria-current="page"] { color: var(--primary); }
 .site-nav .menu a[aria-current="page"] { text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 1px; }
 .nav-tools { display: flex; gap: 6px; }
-.icon-control { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; color: var(--secondary); border-radius: 50%; }
+/* Override PaperMod's .header-nav a display rule for both icon controls. */
+.site-nav .icon-control { width: 36px; height: 36px; padding: 0; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; line-height: 1; color: var(--secondary); border-radius: 50%; }
+.icon-control svg { display: block; flex-shrink: 0; pointer-events: none; }
 .icon-control:hover { background: var(--code-bg); color: var(--primary); }
+.theme-picker { position: relative; display: flex; }
+.theme-mode-icon { display: none; }
+:root:not([data-theme-preference]) [data-theme-icon="auto"],
+:root[data-theme-preference="auto"] [data-theme-icon="auto"],
+:root[data-theme-preference="light"] [data-theme-icon="light"],
+:root[data-theme-preference="dark"] [data-theme-icon="dark"] { display: flex; }
+.theme-options { position: absolute; z-index: 40; right: 0; top: calc(100% + 8px); width: 168px; padding: 6px; border: 1px solid var(--border); border-radius: 12px; background: var(--theme); box-shadow: 0 6px 20px #00000012; }
+.theme-options[hidden] { display: none; }
+.theme-options button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 8px 10px; border-radius: 7px; color: var(--content); font-size: 13px; text-align: left; white-space: nowrap; }
+.theme-options button svg { flex-shrink: 0; }
+.theme-options button:hover, .theme-options button[aria-pressed="true"] { background: var(--code-bg); color: var(--primary); }
+.theme-choice-check { margin-left: auto; visibility: hidden; }
+.theme-options button[aria-pressed="true"] .theme-choice-check { visibility: visible; }
+.theme-options button:focus-visible { outline-offset: -2px; }
 .main { padding-top: 36px; padding-bottom: 48px; }
 .main:has(> .homepage), .main:has(> .gallery-page) { max-width: 928px; }
 .main:has(> .homepage) { padding-top: 0; }

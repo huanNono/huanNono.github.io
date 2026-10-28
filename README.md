@@ -44,6 +44,10 @@ draft: true
 
 阅读页样式在 `assets/css/extended/reader.css`，交互在 `assets/js/reader.js`，模板在 `layouts/posts/page.html`。布局参考 [Arthals 的 Bomb Lab 文章](https://arthals.ink/blog/bomb-lab)，保留本站的内容和导航。
 
+## 外观模式
+
+点击导航右上角的外观图标，可选择“浅色”“深色”或“跟随系统”。选择会保存在当前浏览器中。跟随系统时显示显示器图标，系统外观变化会立即反映到页面，无需刷新；没有保存过偏好时默认跟随系统。
+
 ## 私人草稿
 
 `draft: true` 仅控制生成网页，不会隐藏公开 GitHub 仓库中的文件。
