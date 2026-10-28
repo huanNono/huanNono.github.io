@@ -1,0 +1,25 @@
+{{ $canonical := .Permalink }}
+<section class="reader-info" aria-labelledby="reader-info-title" data-article-url="{{ $canonical }}">
+  <span class="info-watermark" aria-hidden="true">©</span>
+  <p class="reader-info-label" id="reader-info-title">本文信息</p>
+  <h2>{{ .Title }}</h2>
+  <a class="reader-permalink" href="{{ $canonical }}">{{ $canonical }}</a>
+  <dl class="reader-info-fields">
+    <div><dt>作者</dt><dd>{{ partial "author.html" . }}</dd></div>
+    {{ if not .Date.IsZero }}<div><dt>发布于</dt><dd><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time></dd></div>{{ end }}
+    {{ if .Lastmod.After .Date }}<div><dt>更新于</dt><dd><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006年1月2日" }}</time></dd></div>{{ end }}
+    <div><dt>版权</dt><dd>{{ .Param "articleCopyright" | default "版权归作者所有" }}</dd></div>
+  </dl>
+  <div class="reader-share-actions" aria-label="分享本文">
+    <button class="reader-action" type="button" data-copy-link aria-label="复制本文链接" title="复制本文链接" hidden>{{ partial "reader-icon.html" "link" }}</button>
+    <button class="reader-action" type="button" data-open-qr aria-haspopup="dialog" aria-controls="reader-qr" aria-label="显示本文二维码" title="用手机扫码阅读" hidden>{{ partial "reader-icon.html" "qr" }}</button>
+    <a class="reader-action" href="{{ printf "https://x.com/intent/post?%s" (querify "text" .Title "url" $canonical) }}" target="_blank" rel="noopener noreferrer" aria-label="分享到 X（新窗口打开）" title="分享到 X">{{ partial "svg.html" (dict "name" "x") }}</a>
+    <span class="reader-copy-status" data-copy-status role="status" aria-live="polite"></span>
+  </div>
+</section>
+<dialog class="reader-qr" id="reader-qr" aria-labelledby="reader-qr-title">
+  <div class="qr-heading"><h2 id="reader-qr-title">在手机上继续阅读</h2><button type="button" class="reader-action" data-close-qr aria-label="关闭二维码">{{ partial "reader-icon.html" "close" }}</button></div>
+  {{ with images.QR $canonical (dict "scale" 6 "level" "medium" "targetDir" "images/qr") }}<img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="打开本文的二维码" loading="lazy">{{ end }}
+  <p>{{ .Title }}</p>
+  <a href="{{ $canonical }}">{{ $canonical }}</a>
+</dialog>

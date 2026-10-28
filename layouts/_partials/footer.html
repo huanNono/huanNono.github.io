@@ -1,3 +1,4 @@
+{{ $isReader := and .IsPage (eq .Section "posts") }}
 {{ if not (.Param "hideFooter") }}
 <footer class="footer site-footer">
   {{ partial "social-accounts.html" . }}
@@ -9,7 +10,7 @@
 </footer>
 {{ end }}
 
-{{- if (not site.Params.disableScrollToTop) }}
+{{- if and (not site.Params.disableScrollToTop) (not $isReader) }}
 <a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
@@ -41,10 +42,12 @@
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        if (anchor.closest("[data-reader-root]")) return;
         anchor.addEventListener("click", function (e) {
-            e.preventDefault();
             var id = this.getAttribute("href").substr(1);
-            const target = document.querySelector(`[id='${decodeURIComponent(id)}']`);
+            const target = document.getElementById(decodeURIComponent(id));
+            if (!target) return;
+            e.preventDefault();
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 target.scrollIntoView({
                     behavior: "smooth"
@@ -68,7 +71,7 @@
 
 </script>
 
-{{- if (not site.Params.disableScrollToTop) }}
+{{- if and (not site.Params.disableScrollToTop) (not $isReader) }}
 <script>
     var toplink = document.getElementById("top-link");
     var scrollTicking = false;
@@ -107,7 +110,7 @@
 </script>
 {{- end }}
 
-{{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }}
+{{- if (and (not $isReader) (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }}
 <script>
     document.querySelectorAll('pre > code').forEach((codeblock) => {
         const container = codeblock.parentNode.parentNode;

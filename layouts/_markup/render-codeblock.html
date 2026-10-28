@@ -1,0 +1,14 @@
+{{ if eq .Page.Section "posts" }}
+{{ $options := dict "lineNos" false "lineNumbersInTable" false "noClasses" false }}
+{{ if not (transform.CanHighlight .Type) }}{{ $options = merge $options (dict "type" "text") }}{{ end }}
+{{ $code := transform.HighlightCodeBlock . $options }}
+{{ $id := printf "reader-code-%d" .Ordinal }}
+{{ $lineCount := len (split (strings.TrimSuffix "\n" .Inner) "\n") }}
+<figure class="reader-code" data-code-lines="{{ $lineCount }}">
+  <div class="reader-code-toolbar"><span data-code-language="{{ .Type | default "text" }}" aria-label="{{ .Type | default "文本" }}"></span><button type="button" data-copy-code aria-label="复制代码" hidden>{{ partial "reader-icon.html" "copy" }}<span></span></button></div>
+  <div class="reader-code-scroll" id="{{ $id }}" tabindex="0" role="region" aria-label="{{ .Type | default "文本" }} 代码">{{ $code.Wrapped }}</div>
+  <button type="button" class="reader-code-expand" data-expand-code aria-controls="{{ $id }}" aria-expanded="true" hidden>{{ partial "reader-icon.html" "chevron" }}<span></span></button>
+</figure>
+{{ else }}
+{{ $code := transform.HighlightCodeBlock . }}{{ $code.Wrapped }}
+{{ end }}

@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ $hasToc := and (.Param "showtoc") (findRE "<a " .TableOfContents) }}
+<div class="reader-page" data-reader-root>
+  <a class="reader-back" href="{{ "posts/" | relURL }}">{{ partial "reader-icon.html" "back" }}<span>返回 Blog</span></a>
+  <article class="reader-layout{{ if not $hasToc }} reader-without-toc{{ end }}">
+    <header class="reader-intro">
+      <div class="reader-meta">
+        {{ if not .Date.IsZero }}<span>{{ partial "reader-icon.html" "calendar" }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time></span>{{ end }}
+        <span>{{ partial "reader-icon.html" "clock" }}{{ .ReadingTime }} 分钟</span>
+        <span>{{ partial "reader-icon.html" "globe" }}中文</span>
+        {{ with .GetTerms "tags" }}<span class="reader-meta-tags">{{ partial "reader-icon.html" "hash" }}{{ range $i, $tag := . }}{{ if $i }}<span aria-hidden="true">/</span>{{ end }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</span>{{ end }}
+      </div>
+      <h1 id="article-title">{{ .Title }}</h1>
+      {{ with .Description }}<p class="reader-description">{{ . }}</p>{{ end }}
+      <p class="reader-byline">{{ partial "author.html" . }}<span aria-hidden="true"> · </span>{{ .WordCount }} 字{{ if .Draft }}<span class="reader-draft">草稿</span>{{ end }}</p>
+      <div class="reader-title-rule" aria-hidden="true"></div>
+    </header>
+    {{ if $hasToc }}
+    <aside class="reader-sidebar" aria-label="文章目录">
+      <details class="reader-toc" open>
+        <summary><span class="toc-desktop-label">TABLE OF CONTENTS</span><span class="toc-mobile-label">文章目录</span>{{ partial "reader-icon.html" "chevron" }}</summary>
+        {{ .TableOfContents }}
+      </details>
+    </aside>
+    {{ end }}
+    <div id="article-content" class="post-content md-content reader-content" tabindex="-1">
+      {{ $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
+      {{ partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
+      {{ .Content }}
+    </div>
+    <footer class="reader-end">
+      {{ partial "reader-info.html" . }}
+      {{ if .Param "ShowPostNavLinks" }}{{ partial "reader-pagination.html" . }}{{ end }}
+    </footer>
+  </article>
+  <button class="reader-progress" type="button" data-reading-top aria-label="返回文章顶部" title="返回顶部" hidden><span data-reading-percent aria-hidden="true">0%</span><span class="reader-progress-arrow" aria-hidden="true">{{ partial "reader-icon.html" "up" }}</span></button>
+</div>
+{{ end }}

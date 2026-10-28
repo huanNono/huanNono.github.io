@@ -1,0 +1,7 @@
+{{ $pages := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+{{ if gt (len $pages) 1 }}
+<nav class="reader-pagination" aria-label="上下篇文章">
+  {{ with $pages.Next . }}<a class="reader-previous" href="{{ .RelPermalink }}" rel="prev">{{ partial "reader-icon.html" "back" }}<span><small>上一篇</small><span>{{ .Title }}</span></span></a>{{ end }}
+  {{ with $pages.Prev . }}<a class="reader-next" href="{{ .RelPermalink }}" rel="next"><span><small>下一篇</small><span>{{ .Title }}</span></span>{{ partial "reader-icon.html" "next" }}</a>{{ end }}
+</nav>
+{{ end }}

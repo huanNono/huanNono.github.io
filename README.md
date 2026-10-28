@@ -27,7 +27,22 @@ draft: true
 ---
 ```
 
-正文使用 Markdown。生活随笔将分类换成 `生活`。图片放在该文章的目录里，正文用 `![图片说明](photo.jpg)` 引用。代码用三个反引号包围并标注语言。当前提供代码高亮；数学公式渲染尚未配置。
+正文使用 Markdown。生活随笔将分类换成 `生活`。图片放在该文章的目录里，正文用 `![图片说明](photo.jpg)` 引用。代码用三个反引号包围并标注语言。代码块自动提供高亮、行号和复制按钮；数学公式渲染尚未配置。
+
+## 阅读博文
+
+`content/posts/` 中的文章会自动使用阅读页布局，无需修改模板。
+
+- 桌面：宽正文搭配右侧固定目录；滚动时高亮当前章节，点击目录可跳转。
+- 手机：目录默认收起，点击“文章目录”展开；选择章节后自动收起。
+- 顶栏向下滚动时收起，向上滚动时显示；右下角显示阅读进度，点击返回顶部。
+- 代码有语言标记、行号和复制按钮；超过 12 行默认折叠，可展开和收起。复制结果不包含行号。
+- 文末自动生成标题、文章地址、作者、发布日期、版权说明，并提供复制链接、二维码和分享到 X；上下篇按文章日期排列。
+- 二维码由 Hugo 在构建时生成，无需第三方服务。关闭 JavaScript 时正文、代码和目录仍可阅读，代码完整展开。
+
+目录来自 Markdown 标题 `##`、`###` 等。文章不需要目录时，在头部添加 `showtoc: false`。如需显示更新时间，可填写真实的 `lastmod`。版权说明默认为“版权归作者所有”，可通过文章头部的 `articleCopyright` 自定义。
+
+阅读页样式在 `assets/css/extended/reader.css`，交互在 `assets/js/reader.js`，模板在 `layouts/posts/page.html`。布局参考 [Arthals 的 Bomb Lab 文章](https://arthals.ink/blog/bomb-lab)，保留本站的内容和导航。
 
 ## 私人草稿
 
@@ -67,7 +82,7 @@ photos:
 
 ### 技术说明
 
-首页使用 Hugo 的 `layouts/home.html` 覆盖模板（[Hugo 模板文档](https://gohugo.io/templates/types/)）。文章页、代码复制、搜索与主题切换仍使用 PaperMod。固定主题版本由 Git 子模块记录，自动发布在 `.github/workflows/hugo.yaml`。
+首页使用 Hugo 的 `layouts/home.html` 覆盖模板（[Hugo 模板文档](https://gohugo.io/templates/types/)）。博文使用独立阅读页模板；搜索与主题切换继续使用 PaperMod。`layouts/baseof.html` 为页脚缓存加入文章分区，保证阅读页脚本只在博文页加载。固定主题版本由 Git 子模块记录，自动发布在 `.github/workflows/hugo.yaml`。
 
 ## 本地命令
 

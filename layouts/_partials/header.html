@@ -1,4 +1,6 @@
-<header class="header site-header">
+{{ $isReader := and .IsPage (eq .Section "posts") }}
+{{ if $isReader }}<a class="reader-skip" href="#article-content">跳至正文</a>{{ end }}
+<header class="header site-header{{ if $isReader }} reader-site-header{{ end }}">
   <nav class="header-nav site-nav" aria-label="主导航">
     <a class="wordmark" href="{{ "" | relLangURL }}" aria-label="{{ site.Title }} 首页">{{ site.Title }}</a>
     <ul id="menu" class="menu">
