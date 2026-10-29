@@ -3,11 +3,11 @@
   <li>
     {{ if .url }}
     <a class="social-account" href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .name }}（新窗口打开）">
-      <span class="social-symbol" aria-hidden="true">{{ partial "svg.html" (dict "name" .icon) }}</span><span>{{ .name }}</span>
+      <span class="social-symbol" aria-hidden="true">{{ partial "social-icon.html" (dict "name" .icon) }}</span><span>{{ .name }}</span>
     </a>
     {{ else }}
     <span class="social-account social-pending" title="{{ .name }} 链接待补充">
-      <span class="social-symbol" aria-hidden="true">{{ partial "svg.html" (dict "name" .icon) }}</span><span>{{ .name }}</span><small>待添加</small>
+      <span class="social-symbol" aria-hidden="true">{{ partial "social-icon.html" (dict "name" .icon) }}</span><span>{{ .name }}</span><small>待添加</small>
     </span>
     {{ end }}
   </li>

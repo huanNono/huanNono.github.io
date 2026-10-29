@@ -2,6 +2,9 @@
 - name: GitHub
   icon: github
   url: https://github.com/huanNono
+- name: ChatGPT
+  icon: chatgpt
+  url: https://chatgpt.com/u/huannono
 - name: X
   icon: x
   url: https://x.com/huanNono

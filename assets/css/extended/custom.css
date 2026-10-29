@@ -158,7 +158,7 @@ a.social-account:hover .social-symbol { border-color: var(--secondary); backgrou
   .photo-empty-message span { font-size: 9px; }
   .photo-item figcaption { flex-direction: column; gap: 3px; font-size: 10px; }
   .site-footer.footer { margin-top: 0; }
-  .social-accounts { gap: 18px; padding: 26px 0 36px; }
+  .social-accounts { gap: clamp(8px, 3vw, 18px); padding: 26px 0 36px; }
   .social-account { min-width: 50px; font-size: 10px; }
   .social-symbol { width: 42px; height: 42px; }
   .footer-bottom { font-size: 10px; }
@@ -171,7 +171,7 @@ a.social-account:hover .social-symbol { border-color: var(--secondary); backgrou
   .site-header { padding: 0 18px; }
   .section-title { gap: 7px; }
   .section-note { letter-spacing: 0; }
-  .social-accounts { gap: 14px; }
+  .social-accounts { gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
