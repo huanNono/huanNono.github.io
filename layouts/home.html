@@ -3,11 +3,11 @@
   {{ with hugo.Data.home }}
   <header class="home-identity">
     <img class="home-avatar" src="{{ .avatar | relURL }}" alt="{{ .avatarAlt }}" width="120" height="120" fetchpriority="high">
-    <h1 class="visually-hidden">{{ .nickname }}</h1>
+    <h1 class="home-name"><span class="visually-hidden">huanNono</span>{{ partial "lettering.html" "brand" }}</h1>
     <span class="identity-line" aria-hidden="true"></span>
   </header>
   <section class="home-section profile-section" aria-labelledby="profile-title">
-    <div class="section-heading"><h2 id="profile-title">Profile</h2></div>
+    <div class="section-heading"><h2 id="profile-title" class="lettered-heading"><span class="visually-hidden">Profile</span>{{ partial "lettering.html" "profile" }}</h2></div>
     <div class="profile-panel">
       <h3>{{ .profileTitle }}</h3>
       {{ range .profileParagraphs }}<p>{{ . }}</p>{{ end }}
@@ -18,7 +18,7 @@
 
   <section class="home-section posts-section" aria-labelledby="posts-title">
     <div class="section-heading">
-      <h2 id="posts-title">Posts</h2>
+      <h2 id="posts-title" class="lettered-heading"><span class="visually-hidden">Posts</span>{{ partial "lettering.html" "posts" }}</h2>
       <a class="text-link" href="{{ "posts/" | relURL }}">View all {{ partial "arrow.html" . }}<span class="visually-hidden"> — 全部文章</span></a>
     </div>
     <div class="post-list">
@@ -30,7 +30,7 @@
 
   <section class="home-section works-section" aria-labelledby="works-title">
     <div class="section-heading">
-      <h2 id="works-title">Works</h2>
+      <h2 id="works-title" class="lettered-heading"><span class="visually-hidden">Works</span>{{ partial "lettering.html" "works" }}</h2>
       <a class="text-link" href="{{ "works/" | relURL }}">View all {{ partial "arrow.html" . }}<span class="visually-hidden"> — 全部摄影作品</span></a>
     </div>
     {{ partial "photo-grid.html" (dict "photos" (first 4 hugo.Data.photography.photos)) }}

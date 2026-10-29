@@ -1,0 +1,7 @@
+{{- $name := . -}}
+{{- $art := index hugo.Data.lettering $name -}}
+{{- $source := resources.Get $art.src -}}
+{{- $image := $source.Resize "1600x webp q90" -}}
+<svg class="lettering-art lettering-art--{{ $name }}" xmlns="http://www.w3.org/2000/svg" viewBox="{{ delimit $art.viewBox " " }}" width="{{ index $art.viewBox 2 }}" height="{{ index $art.viewBox 3 }}" aria-hidden="true" focusable="false">
+  <image href="{{ $image.RelPermalink }}" width="{{ $source.Width }}" height="{{ $source.Height }}" />
+</svg>

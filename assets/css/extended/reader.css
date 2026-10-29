@@ -26,7 +26,6 @@ body:has([data-reader-root]) {
 }
 .reader-site-header { height: 96px; }
 .reader-site-header .site-nav { max-width: 1216px; }
-.reader-site-header .wordmark { letter-spacing: -.05em; }
 .reader-site-header.reader-header-pinned .site-nav {
   position: fixed; z-index: 20; top: 16px; left: 50%;
   width: min(calc(100% - 48px), 1060px); max-width: none; height: 62px; min-height: 0;
@@ -171,7 +170,6 @@ body:has([data-reader-root]) {
   .reader-site-header { height: 116px; }
   .reader-site-header.reader-header-pinned .site-nav { top: 8px; width: calc(100% - 24px); height: auto; padding: 9px 15px 8px; border-radius: 13px; }
   .reader-site-header.reader-header-pinned .site-nav .menu a { padding-top: 9px; padding-bottom: 3px; }
-  .reader-site-header.reader-header-pinned .wordmark { font-size: 23px; }
   .reader-site-header.reader-header-hidden .site-nav { transform: translate(-50%, -150px); }
   .main:has(> .reader-page) { padding: 20px 22px 36px; }
   .reader-back { font-size: 12px; margin-bottom: 28px; }

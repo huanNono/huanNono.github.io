@@ -1,0 +1,13 @@
+# Approved artwork. Crop boxes remove only transparent canvas padding at render time.
+brand:
+  src: images/lettering/huanNono.png
+  viewBox: [78, 137, 1945, 515]
+profile:
+  src: images/lettering/profile.png
+  viewBox: [119, 145, 1806, 546]
+posts:
+  src: images/lettering/posts.png
+  viewBox: [237, 85, 1629, 618]
+works:
+  src: images/lettering/works.png
+  viewBox: [70, 94, 1966, 583]
