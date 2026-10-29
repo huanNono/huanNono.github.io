@@ -2,13 +2,16 @@
   "use strict";
   const html = document.documentElement;
   const system = window.matchMedia("(prefers-color-scheme: dark)");
-  const labels = { light: "浅色", dark: "深色", auto: "跟随系统" };
-  const normalize = value => Object.hasOwn(labels, value) ? value : "auto";
+  const modes = ["light", "dark", "auto"];
+  const labels = { light: "白天", dark: "黑夜", auto: "跟随系统" };
+  const storageKey = "yoyo-theme-mode";
+  const normalize = value => modes.includes(value) ? value : "light";
   const readPreference = () => {
-    try { return normalize(localStorage.getItem("pref-theme")); }
-    catch { return "auto"; }
+    try { return normalize(sessionStorage.getItem(storageKey)); }
+    catch { return "light"; }
   };
   let preference = readPreference();
+  const nextMode = () => modes[(modes.indexOf(preference) + 1) % modes.length];
 
   const apply = value => {
     preference = normalize(value);
@@ -18,58 +21,22 @@
     html.style.colorScheme = theme;
     const toggle = document.getElementById("theme-toggle");
     if (toggle) {
-      toggle.title = `外观模式：${labels[preference]}`;
+      toggle.title = `当前：${labels[preference]}；点击切换到${labels[nextMode()]}`;
       toggle.setAttribute("aria-label", toggle.title);
     }
-    document.querySelectorAll("[data-theme-choice]").forEach(button => {
-      button.setAttribute("aria-pressed", String(button.dataset.themeChoice === preference));
-    });
   };
-  // Run in the head so a saved choice is applied before the first paint.
+  // Apply before first paint. A new tab starts light; navigation keeps this tab's choice.
   apply(preference);
   system.addEventListener("change", () => { if (preference === "auto") apply("auto"); });
-  window.addEventListener("storage", event => {
-    if (event.key === "pref-theme" || event.key === null) apply(readPreference());
-  });
+  window.addEventListener("pageshow", event => { if (event.persisted) apply(readPreference()); });
 
   const initialize = () => {
-    const picker = document.querySelector(".theme-picker");
-    if (!picker) return;
-    const toggle = picker.querySelector("#theme-toggle");
-    const options = picker.querySelector("#theme-options");
-    const choices = [...picker.querySelectorAll("[data-theme-choice]")];
-    const close = (restoreFocus = false) => {
-      options.hidden = true;
-      toggle.setAttribute("aria-expanded", "false");
-      if (restoreFocus) toggle.focus({ preventScroll: true });
-    };
-    const open = () => {
-      options.hidden = false;
-      toggle.setAttribute("aria-expanded", "true");
-      choices.find(button => button.dataset.themeChoice === preference).focus({ preventScroll: true });
-    };
+    const toggle = document.getElementById("theme-toggle");
+    if (!toggle) return;
     apply(preference);
-    toggle.addEventListener("click", () => { if (options.hidden) open(); else close(true); });
-    choices.forEach(button => button.addEventListener("click", () => {
-      apply(button.dataset.themeChoice);
-      try { localStorage.setItem("pref-theme", preference); } catch { /* Keep this page usable when storage is blocked. */ }
-      close(true);
-    }));
-    picker.addEventListener("keydown", event => {
-      if (event.key === "Escape") { close(true); event.preventDefault(); }
-      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
-        event.preventDefault();
-        if (options.hidden) { open(); return; }
-        const index = choices.indexOf(document.activeElement);
-        const direction = event.key === "ArrowDown" ? 1 : -1;
-        choices[(index + direction + choices.length) % choices.length].focus();
-      }
-    });
-    picker.addEventListener("focusout", event => {
-      if (!picker.contains(event.relatedTarget)) close();
-    });
-    document.addEventListener("pointerdown", event => {
-      if (!picker.contains(event.target)) close();
+    toggle.addEventListener("click", () => {
+      apply(nextMode());
+      try { sessionStorage.setItem(storageKey, preference); } catch { /* Switching still works without storage. */ }
     });
   };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initialize, { once: true });

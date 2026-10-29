@@ -24,7 +24,7 @@ params:
   author: YOYO
   mainSections: [posts]
   DateFormat: "2006年1月2日"
-  defaultTheme: auto
+  defaultTheme: light
   ShowReadingTime: true
   ShowWordCount: true
   ShowPostNavLinks: true
