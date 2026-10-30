@@ -42,6 +42,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--site-accent); o
 .nav-tools { display: flex; gap: 6px; }
 /* Override PaperMod's .header-nav a display rule for both icon controls. */
 .site-nav .icon-control { width: 36px; height: 36px; padding: 0; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; line-height: 1; color: var(--secondary); border-radius: 50%; }
+.site-nav .home-control { grid-column: 1; grid-row: 1; justify-self: start; }
 .icon-control svg { display: block; flex-shrink: 0; pointer-events: none; }
 .icon-control:hover { background: var(--code-bg); color: var(--primary); }
 #theme-toggle { position: relative; }
