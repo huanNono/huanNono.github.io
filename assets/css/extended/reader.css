@@ -56,7 +56,7 @@ body:has([data-reader-root]),
 .reader-intro h1,
 .site-surface :is(.post-header, .page-header, .collection-header) h1 { margin: 28px 0 12px; font-size: clamp(28px, 2.5vw, 38px); line-height: 1.45; letter-spacing: -.025em; font-weight: 650; text-wrap: pretty; }
 .reader-description,
-.site-surface :is(.post-description, .collection-header > p:not(.eyebrow)) { font-size: 16px; line-height: 1.75; color: var(--secondary); font-style: italic; }
+.site-surface .post-description { font-size: 16px; line-height: 1.75; color: var(--secondary); font-style: italic; }
 .reader-byline { color: var(--secondary); font-size: 13px; margin-top: 6px; }
 .reader-draft { margin-left: 12px; padding: 2px 6px; border: 1px solid var(--border); border-radius: 3px; }
 .reader-title-rule,
@@ -189,7 +189,7 @@ body:has([data-reader-root]),
   .reader-intro h1,
   .site-surface :is(.post-header, .page-header, .collection-header) h1 { font-size: 29px; line-height: 1.5; margin-top: 23px; }
   .reader-description,
-  .site-surface :is(.post-description, .collection-header > p:not(.eyebrow)) { font-size: 14px; }
+  .site-surface .post-description { font-size: 14px; }
   .reader-byline { font-size: 11px; margin-top: 9px; }
   .reader-title-rule,
   .site-surface :is(.post-header, .page-header, .collection-header)::after { margin: 24px 0 25px; width: 34%; }

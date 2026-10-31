@@ -1,6 +1,5 @@
 ---
 title: Share
-description: 一些值得留下和分享的内容。
 hideMeta: true
 showtoc: false
 searchHidden: true

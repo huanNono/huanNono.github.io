@@ -24,7 +24,7 @@
     <div class="post-list">
       {{ $posts := where site.RegularPages "Section" "posts" }}
       {{ $posts = where $posts "Params.hiddenInHomeList" "!=" true }}
-      {{ range first 4 $posts.ByDate.Reverse }}{{ partial "post-row.html" (dict "page" . "heading" "h3") }}{{ else }}<p class="empty-note">第一篇文字，正在路上。</p>{{ end }}
+      {{ range first 4 $posts.ByDate.Reverse }}{{ partial "post-row.html" (dict "page" . "heading" "h3") }}{{ else }}<p class="empty-note">暂无文章</p>{{ end }}
     </div>
   </section>
 

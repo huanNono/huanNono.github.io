@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="gallery-page">
-<header class="collection-header"><p class="eyebrow">镜头里的生活</p><h1>{{ .Title }}</h1><p>{{ .Description }}</p></header>
+<header class="collection-header"><h1>{{ .Title }}</h1></header>
 {{ with .Content }}<div class="gallery-intro">{{ . }}</div>{{ end }}
 {{ partial "photo-grid.html" (dict "photos" hugo.Data.photography.photos) }}
 </div>

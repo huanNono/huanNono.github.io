@@ -3,10 +3,9 @@
 <footer class="footer site-footer">
   {{ partial "social-accounts.html" . }}
   <div class="footer-bottom">
-    <span>© {{ now.Year }} <a href="{{ "" | relLangURL }}">{{ site.Title }}</a> · 学习，也记录生活。</span>
+    <span>© {{ now.Year }} <a href="{{ "" | relLangURL }}">{{ site.Title }}</a></span>
     <div class="footer-links"><a href="{{ "archives/" | relURL }}">归档</a><a href="{{ "index.xml" | relURL }}">RSS</a><a href="{{ "search/" | relURL }}">搜索</a></div>
   </div>
-  <p class="footer-credit">Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &amp; <a href="https://github.com/adityatelange/hugo-PaperMod/" target="_blank" rel="noopener">PaperMod</a></p>
 </footer>
 {{ end }}
 

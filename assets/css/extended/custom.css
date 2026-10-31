@@ -87,10 +87,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--site-accent); o
 .photo-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
 .photo-image:hover img { transform: scale(1.025); }
 .photo-item figcaption { display: flex; gap: 12px; justify-content: space-between; color: var(--secondary); font-size: 12px; margin-top: 12px; }
-.photo-pending .photo-image { border: 1px solid var(--border); background: var(--theme); }
-.frame-number { position: absolute; top: 17px; left: 20px; font-size: 10px; color: var(--secondary); letter-spacing: .12em; }
-.photo-empty-message { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; color: var(--secondary); }
-.photo-empty-message span { font-size: 11px; letter-spacing: .08em; }
+.photo-pending .photo-image { display: grid; place-items: center; border: 1px solid var(--border); background: var(--theme); color: var(--secondary); }
 .site-footer.footer { max-width: 928px; padding: 0 24px 30px; margin: 24px auto 0; font-size: 11px; line-height: 1.8; }
 .social-accounts { display: flex; justify-content: center; align-items: flex-start; gap: 30px; padding: 42px 0 46px; list-style: none; }
 .social-account { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 60px; color: var(--content); font-size: 11px; }
@@ -102,12 +99,9 @@ a.social-account:hover .social-symbol { border-color: var(--secondary); backgrou
 .social-pending small { font-size: 9px; margin-top: -5px; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 22px; }
 .footer-links { display: flex; gap: 16px; }
-.footer-credit { margin-top: 10px; font-size: 10px; }
-.footer-bottom a:hover, .footer-credit a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.collection-header { margin: 12px 0 36px; }
-.collection-header h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 46px; margin: 8px 0 14px; letter-spacing: -.03em; }
-.collection-header > p { color: var(--secondary); font-size: 15px; }
-.collection-header .eyebrow { font-size: 11px; letter-spacing: .12em; }
+.footer-bottom a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.collection-header { margin: 12px 0 24px; }
+.collection-header h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 46px; margin: 0; letter-spacing: -.03em; }
 .blog-filters { display: flex; gap: 24px; flex-wrap: wrap; margin: 0 0 28px; font-size: 13px; color: var(--secondary); }
 .blog-filters a { padding-bottom: 8px; }
 .blog-filters a[aria-current="page"] { color: var(--primary); border-bottom: 1px solid var(--primary); }
@@ -144,17 +138,13 @@ a.social-account:hover .social-symbol { border-color: var(--secondary); backgrou
   .note-arrow .arrow-icon { width: 17px; }
   .photo-grid { gap: 16px 14px; }
   .photo-image { aspect-ratio: 4 / 3; }
-  .frame-number { top: 9px; left: 11px; font-size: 8px; }
-  .photo-empty-message { gap: 7px; }
-  .photo-empty-message svg { width: 23px; height: 23px; }
-  .photo-empty-message span { font-size: 9px; }
+  .photo-pending svg { width: 23px; height: 23px; }
   .photo-item figcaption { flex-direction: column; gap: 3px; font-size: 10px; }
   .site-footer.footer { margin-top: 0; }
   .social-accounts { gap: clamp(8px, 3vw, 18px); padding: 26px 0 36px; }
   .social-account { min-width: 50px; font-size: 10px; }
   .social-symbol { width: 42px; height: 42px; }
   .footer-bottom { font-size: 10px; }
-  .footer-credit { text-align: left; font-size: 9px; }
   .post-title { font-size: 28px; }
   .collection-header h1 { font-size: 40px; }
 }

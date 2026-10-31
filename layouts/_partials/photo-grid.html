@@ -7,13 +7,13 @@
     <figcaption><span>{{ .title }}</span>{{ with .detail }}<span>{{ . }}</span>{{ end }}</figcaption>
   </figure>
   {{ else }}
+  <span class="visually-hidden">暂无摄影作品</span>
   {{ range seq 4 }}
-  <figure class="photo-item photo-pending">
+  <div class="photo-item photo-pending" aria-hidden="true">
     <div class="photo-image">
-      <span class="frame-number" aria-hidden="true">{{ printf "%02d" . }}</span>
-      <div class="photo-empty-message"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M8 5 9.5 3h5L16 5h4a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><circle cx="12" cy="12.5" r="4"/></svg><span>照片待收录</span></div>
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M8 5 9.5 3h5L16 5h4a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><circle cx="12" cy="12.5" r="4"/></svg>
     </div>
-  </figure>
+  </div>
   {{ end }}
   {{ end }}
 </div>
