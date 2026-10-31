@@ -2,16 +2,13 @@
 <div class="homepage home-experiment" data-home-experiment>
   {{ with hugo.Data.home }}
   <header class="experimental-hero" aria-labelledby="home-title">
-    <div class="hero-edition"><span>一个持续生长的个人空间</span><span>Notes / Life / Frames</span></div>
     <div class="hero-stage" data-motion-stage>
       <div class="hero-orbit" aria-hidden="true"><span></span></div>
       <img class="hero-avatar" src="{{ .avatar | relURL }}" alt="{{ .avatarAlt }}" width="120" height="120" fetchpriority="high">
-      <p class="hero-margin hero-margin-left">保持好奇。<br>慢慢展开。</p>
       <h1 id="home-title" class="hero-name"><span class="visually-hidden">huanNono</span>{{ partial "lettering.html" "brand" }}</h1>
-      <p class="hero-margin hero-margin-right">A little thought.<br>A little life.</p>
       <a class="hero-enter" href="#profile"><span>向下探索</span><span aria-hidden="true">↓</span></a>
     </div>
-    <div class="hero-bottom"><p>一些文字，一些照片。<br><em>也有还没想明白的事。</em></p><button class="motion-switch" type="button" aria-pressed="false" data-motion-toggle hidden>暂停动效 <span aria-hidden="true">Ⅱ</span></button></div>
+    <div class="hero-bottom"><button class="motion-switch" type="button" aria-pressed="false" data-motion-toggle hidden>暂停动效 <span aria-hidden="true">Ⅱ</span></button></div>
     <nav class="chapter-nav" aria-label="首页章节">
       <a href="#profile"><span>01</span> 关于我 <span aria-hidden="true">↗</span></a>
       <a href="#posts"><span>02</span> 文字与记录 <span aria-hidden="true">↗</span></a>
@@ -19,20 +16,17 @@
     </nav>
   </header>
   <section id="profile" class="experiment-section profile-chapter" aria-labelledby="profile-title">
-    <div class="chapter-caption"><span>01 / ABOUT</span><span>从这里认识我</span></div>
     <div class="chapter-layout">
-      <div class="chapter-art" data-reveal><h2 id="profile-title" class="lettered-heading"><span class="visually-hidden">Profile</span>{{ partial "lettering.html" "profile" }}</h2><span class="chapter-aside" aria-hidden="true">Always a work in progress.</span></div>
+      <div class="chapter-art" data-reveal><h2 id="profile-title" class="lettered-heading"><span class="visually-hidden">Profile</span>{{ partial "lettering.html" "profile" }}</h2></div>
       <div class="profile-copy" data-reveal>
         <h3>{{ .profileTitle }}</h3>
         {{ range .profileParagraphs }}<p>{{ . }}</p>{{ end }}
         <a class="experiment-link" href="{{ "about/" | relURL }}">更多关于我 <span aria-hidden="true">↗</span></a>
-        <div class="profile-footnote"><span aria-hidden="true">✳</span><p>把问题写下来，<br>让理解慢一点发生。</p></div>
       </div>
     </div>
   </section>
   {{ end }}
   <section id="posts" class="experiment-section posts-chapter" aria-labelledby="posts-title">
-    <div class="chapter-caption"><span>02 / JOURNAL</span><span>学习中的理解，生活里的片段</span></div>
     <div class="chapter-layout">
       <div class="chapter-art" data-reveal><h2 id="posts-title" class="lettered-heading"><span class="visually-hidden">Posts</span>{{ partial "lettering.html" "posts" }}</h2><a class="experiment-link" href="{{ "posts/" | relURL }}">全部文章 <span aria-hidden="true">↗</span></a></div>
       <div class="journal-list">
@@ -49,19 +43,17 @@
     </div>
   </section>
   <section id="works" class="experiment-section works-chapter" aria-labelledby="works-title">
-    <div class="chapter-caption"><span>03 / FRAMES</span><span>留住视线停下的瞬间</span></div>
     <div class="works-heading" data-reveal><h2 id="works-title" class="lettered-heading"><span class="visually-hidden">Works</span>{{ partial "lettering.html" "works" }}</h2><a class="experiment-link" href="{{ "works/" | relURL }}">摄影作品 <span aria-hidden="true">↗</span></a></div>
     {{ if hugo.Data.photography.photos }}
     <div class="experimental-photos" data-reveal>{{ partial "photo-grid.html" (dict "photos" (first 4 hugo.Data.photography.photos)) }}</div>
     {{ else }}
     <a class="empty-viewfinder" href="{{ "works/" | relURL }}" data-viewfinder aria-label="浏览摄影页面，照片待收录">
-      <span class="viewfinder-label">FRAME / 尚未定格</span>
       <span class="viewfinder-cross" aria-hidden="true"></span>
-      <span class="viewfinder-title">日常里，<br><em>总有值得留下的。</em></span>
-      <span class="viewfinder-bottom"><span>照片正在路上</span><span>进入相册 ↗</span></span>
+      <span class="viewfinder-title">照片待收录</span>
+      <span class="viewfinder-bottom">进入相册 ↗</span>
     </a>
     {{ end }}
   </section>
-  <div class="home-signoff"><span>继续好奇，</span><em>下次见。</em><a href="#top" aria-label="返回顶部">↑</a></div>
+  <div class="home-signoff"><a href="#top" aria-label="返回顶部">↑</a></div>
 </div>
 {{ end }}
