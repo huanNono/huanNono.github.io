@@ -16,11 +16,14 @@
     {{- partial "head.html" . }}
 </head>
 
-{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) }}
-<body class="list" id="top">
-{{- else }}
-<body id="top">
+{{- $classes := slice -}}
+{{- if or (ne .Kind "page") (in (slice "archives" "search") .Layout) -}}
+    {{- $classes = $classes | append "list" -}}
+{{- end -}}
+{{- if ne .Section "posts" -}}
+    {{- $classes = $classes | append "site-surface" -}}
 {{- end }}
+<body{{ with $classes }} class="{{ delimit . " " }}"{{ end }} id="top">
     {{ partialCached "header.html" . .Page -}}
     <main class="main">
         {{- block "main" . }}{{ end }}

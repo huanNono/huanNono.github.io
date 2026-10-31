@@ -1,0 +1,43 @@
+/* Non-Blog pages use the reading palette and a single column for their existing content. */
+.site-surface {
+  --site-accent: var(--reader-accent);
+  --photo-bg: var(--code-bg);
+}
+.site-surface :is(.main, .site-footer) {
+  max-width: 880px;
+  padding-inline: 32px;
+}
+.site-surface .main { padding-block: 28px 50px; }
+.site-surface :is(.post-header, .page-header, .collection-header) { margin: 0; }
+.site-surface :is(.post-header, .page-header, .collection-header) h1 { font-family: inherit; }
+.site-surface :is(.post-header, .page-header, .collection-header)::after { content: ""; display: block; }
+.site-surface .breadcrumbs { font-size: 13px; margin-bottom: 24px; }
+.site-surface .breadcrumbs a { color: inherit; font-size: inherit; }
+.site-surface .post-content {
+  margin: 0;
+  color: var(--content);
+  font-size: var(--reading-text-size);
+  line-height: 1.9;
+  overflow-wrap: break-word;
+}
+.site-surface .post-content > :first-child { margin-top: 0; }
+.site-surface .post-content :is(p, ul, ol) { margin-block: 0 1.4em; }
+.site-surface .post-content a:not(.anchor) { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.site-surface :is(.breadcrumbs a, .post-content a):hover { color: var(--reader-accent); }
+.site-surface .searchbox input {
+  padding: 10px 14px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.site-surface .searchbox input:focus-visible { outline: 2px solid var(--reader-accent); outline-offset: 2px; }
+@media (max-width: 1049px) {
+  .site-surface :is(.main, .site-footer) { max-width: 850px; padding-inline: 28px; }
+  .site-surface .main { padding-block: 24px 44px; }
+}
+@media (max-width: 700px) {
+  .site-surface :is(.main, .site-footer) { padding-inline: 22px; }
+  .site-surface .main { padding-block: 20px 36px; }
+}
