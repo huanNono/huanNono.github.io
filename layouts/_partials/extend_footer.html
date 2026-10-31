@@ -2,3 +2,8 @@
 {{ $script := resources.Get "js/reader.js" | js.Build | minify | fingerprint }}
 <script defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
 {{ end }}
+
+{{ if .IsHome }}
+{{ $homeScript := resources.Get "js/home-experiment.js" | js.Build | minify | fingerprint }}
+<script defer src="{{ $homeScript.RelPermalink }}" integrity="{{ $homeScript.Data.Integrity }}" crossorigin="anonymous"></script>
+{{ end }}
