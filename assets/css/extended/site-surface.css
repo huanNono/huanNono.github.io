@@ -1,5 +1,5 @@
-/* Non-Blog pages use the reading palette and a single column for their existing content. */
-.site-surface {
+/* Lists share the reading accent. The single-column layout is opt-in. */
+.site-surface, body.list {
   --site-accent: var(--reader-accent);
   --photo-bg: var(--code-bg);
 }

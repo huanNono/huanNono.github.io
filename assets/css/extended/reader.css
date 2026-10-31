@@ -1,6 +1,5 @@
-/* The page surface is shared. Reading controls still belong only to articles. */
-body:has([data-reader-root]),
-:root body.site-surface {
+/* The backdrop and palette apply to the whole page, independently of its layout. */
+:root[data-theme] body {
   --theme: #fbfcfd;
   --entry: #ffffff;
   --primary: #20272c;
@@ -14,8 +13,7 @@ body:has([data-reader-root]),
   --reading-text-size: 18px;
   background: linear-gradient(180deg, var(--reader-tint) 0, var(--theme) 850px) no-repeat, var(--theme);
 }
-:root[data-theme="dark"] body:has([data-reader-root]),
-:root[data-theme="dark"] body.site-surface {
+:root[data-theme="dark"] body {
   --theme: #1a1e22;
   --entry: #20262b;
   --primary: #e8edf1;
@@ -193,7 +191,7 @@ body:has([data-reader-root]),
   .reader-byline { font-size: 11px; margin-top: 9px; }
   .reader-title-rule,
   .site-surface :is(.post-header, .page-header, .collection-header)::after { margin: 24px 0 25px; width: 34%; }
-  body:has([data-reader-root]), :root body.site-surface { --reading-text-size: 16px; }
+  :root[data-theme] body { --reading-text-size: 16px; }
   .reader-content h2,
   .site-surface .post-content h2 { font-size: 23px; }
   .reader-content h3,
@@ -219,7 +217,7 @@ body:has([data-reader-root]),
   .reader-site-header .site-nav { transition: none !important; }
 }
 @media print {
-  body:has([data-reader-root]), :root body.site-surface { background: white; color: black; }
+  :root[data-theme] body { background: white; color: black; }
   .reader-site-header, .reader-back, .reader-sidebar, .reader-share-actions, .reader-progress, .reader-qr, .reader-pagination, body:has([data-reader-root]) .site-footer, .reader-code-toolbar button, .reader-code-expand { display: none !important; }
   .main:has(> .reader-page) { max-width: none; padding: 0; }
   .reader-layout { display: block; }
