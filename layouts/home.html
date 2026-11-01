@@ -3,7 +3,7 @@
   {{ with hugo.Data.home }}
   <header class="home-identity">
     <img class="home-avatar" src="{{ .avatar | relURL }}" alt="{{ .avatarAlt }}" width="120" height="120" fetchpriority="high">
-    <h1 class="home-name"><span class="visually-hidden">huanNono</span>{{ partial "lettering.html" "brand" }}</h1>
+    <h1 class="home-name"><span class="visually-hidden">{{ site.Params.brandName }}</span>{{ partial "lettering.html" "brand" }}</h1>
     <span class="identity-line" aria-hidden="true"></span>
   </header>
   <section class="home-section profile-section" aria-labelledby="profile-title">

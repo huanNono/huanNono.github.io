@@ -88,17 +88,42 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--site-accent); o
 .photo-item figcaption { display: flex; gap: 12px; justify-content: space-between; color: var(--secondary); font-size: 12px; margin-top: 12px; }
 .photo-pending .photo-image { display: grid; place-items: center; border: 1px solid var(--border); background: var(--theme); color: var(--secondary); }
 .site-footer.footer { max-width: 928px; padding: 0 24px 30px; margin: 24px auto 0; font-size: 11px; line-height: 1.8; }
-.social-accounts { display: flex; justify-content: center; align-items: flex-start; gap: 30px; padding: 42px 0 46px; list-style: none; }
-.social-account { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 60px; color: var(--content); font-size: 11px; }
-.site-footer a { border: 0; }
-.social-symbol { width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; transition: background .18s ease, border-color .18s ease; }
-.social-symbol svg { width: 21px; height: 21px; }
-a.social-account:hover .social-symbol { border-color: var(--secondary); background: var(--code-bg); }
-.social-pending { color: var(--secondary); }
-.social-pending small { font-size: 9px; margin-top: -5px; }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 22px; }
-.footer-links { display: flex; gap: 16px; }
-.footer-bottom a:hover { text-decoration: underline; text-underline-offset: 4px; }
+/* The copyright and account icons share the row below the footer rule. */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.footer-signature { white-space: nowrap; }
+.social-accounts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 2px;
+  margin: 0;
+  margin-inline-start: auto;
+  padding: 0;
+  list-style: none;
+}
+.social-account { display: grid; place-items: center; width: 44px; height: 44px; line-height: 1; }
+.site-footer .social-account { text-decoration: none; }
+.social-symbol {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transition: color .18s ease, border-color .18s ease, background .18s ease;
+}
+.social-symbol svg { display: block; width: 17px; height: 17px; }
+a.social-account:is(:hover, :focus-visible) .social-symbol { color: var(--primary); border-color: var(--secondary); background: var(--code-bg); }
+a.social-account:focus-visible { border-radius: 50%; outline-offset: -1px; }
+.social-pending { opacity: .6; }
 .collection-header { margin: 12px 0 24px; }
 .collection-header h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 46px; margin: 0; letter-spacing: -.03em; }
 .blog-filters { display: flex; gap: 24px; flex-wrap: wrap; margin: 0 0 28px; font-size: 13px; color: var(--secondary); }
@@ -140,17 +165,16 @@ a.social-account:hover .social-symbol { border-color: var(--secondary); backgrou
   .photo-pending svg { width: 23px; height: 23px; }
   .photo-item figcaption { flex-direction: column; gap: 3px; font-size: 10px; }
   .site-footer.footer { margin-top: 0; }
-  .social-accounts { gap: clamp(8px, 3vw, 18px); padding: 26px 0 36px; }
-  .social-account { min-width: 50px; font-size: 10px; }
-  .social-symbol { width: 42px; height: 42px; }
-  .footer-bottom { font-size: 10px; }
+  .footer-bottom { column-gap: 8px; }
+  .social-account { width: clamp(32px, 10vw, 44px); }
   .post-title { font-size: 28px; }
   .collection-header h1 { font-size: 40px; }
 }
 @media (max-width: 360px) {
   .main, .site-footer.footer { padding-left: 18px; padding-right: 18px; }
   .site-header { padding: 0 18px; }
-  .social-accounts { gap: 8px; }
+  .social-accounts { gap: 0; }
+  .social-symbol { width: 28px; height: 28px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

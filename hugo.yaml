@@ -20,6 +20,7 @@ taxonomies:
   category: categories
   tag: tags
 params:
+  brandName: "huanNono"
   description: "记录学习中的理解，也收集生活里的片段。"
   author: YOYO
   mainSections: [posts]

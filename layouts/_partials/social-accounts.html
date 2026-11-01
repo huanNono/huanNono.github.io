@@ -2,12 +2,12 @@
   {{ range hugo.Data.social }}
   <li>
     {{ if .url }}
-    <a class="social-account" href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .name }}（新窗口打开）">
-      <span class="social-symbol" aria-hidden="true">{{ partial "social-icon.html" (dict "name" .icon) }}</span><span>{{ .name }}</span>
+    <a class="social-account" href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .name }}" aria-label="{{ .name }}（新窗口打开）">
+      <span class="social-symbol" aria-hidden="true">{{ partial "social-icon.html" (dict "name" .icon) }}</span>
     </a>
     {{ else }}
-    <span class="social-account social-pending" title="{{ .name }} 链接待补充">
-      <span class="social-symbol" aria-hidden="true">{{ partial "social-icon.html" (dict "name" .icon) }}</span><span>{{ .name }}</span><small>待添加</small>
+    <span class="social-account social-pending" role="img" title="{{ .name }}（待添加）" aria-label="{{ .name }}（待添加）">
+      <span class="social-symbol" aria-hidden="true">{{ partial "social-icon.html" (dict "name" .icon) }}</span>
     </span>
     {{ end }}
   </li>

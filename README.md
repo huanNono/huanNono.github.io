@@ -61,7 +61,7 @@ Git 也会保留已提交文件的历史；公开前检查文章和图片。
 - 网站标题、作者、菜单：`hugo.yaml`
 - 首页资料（头像、自我介绍）：`data/home.yaml`
 - 头像文件：`static/images/avatar.jpg`，初始头像来自现有 GitHub 账号
-- GitHub、ChatGPT、X、Instagram、bilibili：`data/social.yaml`，填入自己的完整个人主页链接。空链接显示“待添加”，不会跳到错误页面
+- GitHub、ChatGPT、X、Instagram、bilibili：`data/social.yaml`，填入自己的完整个人主页链接。页脚只显示图标。未填写链接的图标不可点击，悬停时提示“待添加”
 - About、Project、Share、Links：`content/` 中对应的 Markdown 文件
 - 排版：`assets/css/extended/custom.css`
 - 首页与组件模板：`layouts/`；主题 `themes/PaperMod` 不需要修改
