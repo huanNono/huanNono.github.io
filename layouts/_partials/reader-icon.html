@@ -6,6 +6,7 @@
 {{ else if eq . "calendar" }}<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18M8 15h1m6 0h1M8 18h1"/>
 {{ else if eq . "clock" }}<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
 {{ else if eq . "globe" }}<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>
+{{ else if eq . "tags" }}<path d="M3 7V4h7l10 10a1.5 1.5 0 0 1 0 2.1M2 8h7l9 9a1.5 1.5 0 0 1 0 2.1l-3 3a1.5 1.5 0 0 1-2.1 0L2 12.2Z"/><circle cx="5.8" cy="10.9" r=".8" fill="currentColor" stroke="none"/>
 {{ else if eq . "hash" }}<path d="m10 3-4 18M18 3l-4 18M4 8h17M2 16h17"/>
 {{ else if eq . "link" }}<path d="m10 13 4-2M8 15l-1 1a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0m4 4 1-1a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0" transform="translate(1 0) scale(.92)"/>
 {{ else if eq . "copy" }}<rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h4"/>

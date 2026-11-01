@@ -1,12 +1,60 @@
 {{ define "main" }}
-<header class="collection-header"><h1>Blog</h1></header>
-<nav class="blog-filters" aria-label="文章分类">
-  <a href="{{ "posts/" | relURL }}" aria-current="page">全部文章</a>
-  {{ range site.Taxonomies.categories.Alphabetical }}<a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>{{ end }}
-  <a href="{{ "archives/" | relURL }}">归档</a>
-</nav>
-<div class="post-list">{{ range (.Paginate .RegularPages.ByDate.Reverse).Pages }}{{ partial "post-row.html" (dict "page" . "heading" "h2") }}{{ else }}<p class="empty-note">暂无文章</p>{{ end }}</div>
-{{ if gt .Paginator.TotalPages 1 }}
-<nav class="page-footer" aria-label="文章分页"><div class="pagination">{{ if .Paginator.HasPrev }}<a class="prev" href="{{ .Paginator.Prev.URL | relURL }}">← 上一页</a>{{ end }}{{ if .Paginator.HasNext }}<a class="next" href="{{ .Paginator.Next.URL | relURL }}">下一页 →</a>{{ end }}</div></nav>
-{{ end }}
+{{ $posts := .RegularPagesRecursive.ByDate.Reverse }}
+{{ $pager := .Paginate $posts }}
+{{ $tags := where site.Taxonomies.tags.ByCount "Pages" "intersect" $posts }}
+{{ $categories := where site.Taxonomies.categories.Alphabetical "Pages" "intersect" $posts }}
+
+<div class="blog-index">
+  <header class="blog-index-header">
+    <a class="reader-back blog-index-back" href="{{ site.Home.RelPermalink }}">{{ partial "reader-icon.html" "back" }}返回首页</a>
+    <h1>Blog</h1>
+  </header>
+
+  <div class="blog-index-grid">
+    <div class="blog-results">
+      <div class="blog-toolbar">
+        <p>第 {{ $pager.PageNumber }} 页 · {{ if gt $pager.TotalPages 1 }}本页 {{ len $pager.Pages }} 篇，{{ end }}共 {{ $pager.TotalNumberOfElements }} 篇</p>
+        <div class="blog-tools">
+          {{ if or $tags $categories }}<a class="blog-topics-jump" href="#blog-topics">{{ if $tags }}标签{{ else }}分类{{ end }}</a>{{ end }}
+          {{ with site.GetPage "/archives" }}<a class="blog-text-link" href="{{ .RelPermalink }}">按年份浏览 {{ partial "arrow.html" . }}</a>{{ end }}
+        </div>
+      </div>
+      <div class="blog-cards">
+        {{ range $pager.Pages }}
+          {{ partial "blog-card.html" . }}
+        {{ else }}
+          <p class="empty-note">暂无文章</p>
+        {{ end }}
+      </div>
+      {{ if gt $pager.TotalPages 1 }}
+      <nav class="blog-pagination" aria-label="文章分页">
+        {{ with $pager.Prev }}<a class="blog-text-link" rel="prev" href="{{ .URL }}">{{ partial "reader-icon.html" "back" }}上一页</a>{{ end }}
+        {{ with $pager.Next }}<a class="blog-text-link" rel="next" href="{{ .URL }}">下一页{{ partial "reader-icon.html" "next" }}</a>{{ end }}
+      </nav>
+      {{ end }}
+    </div>
+
+    {{ if or $tags $categories }}
+    <aside class="blog-topics" id="blog-topics" aria-label="按主题浏览">
+      {{ with $tags }}
+      <section aria-labelledby="blog-tags-title">
+        <h2 id="blog-tags-title">{{ partial "reader-icon.html" "tags" }}标签</h2>
+        <ul class="blog-chips">
+          {{ range first 36 . }}<li><a class="blog-chip" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></li>{{ end }}
+        </ul>
+        {{ with site.GetPage "/tags" }}<a class="blog-text-link blog-all-tags" href="{{ .RelPermalink }}">全部标签 {{ partial "arrow.html" . }}</a>{{ end }}
+      </section>
+      {{ end }}
+      {{ with $categories }}
+      <nav class="blog-categories" aria-label="文章分类">
+        <h2>分类</h2>
+        <ul class="blog-chips">
+          {{ range . }}<li><a class="blog-chip" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></li>{{ end }}
+        </ul>
+      </nav>
+      {{ end }}
+    </aside>
+    {{ end }}
+  </div>
+</div>
 {{ end }}

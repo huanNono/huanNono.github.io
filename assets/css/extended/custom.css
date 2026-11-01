@@ -126,9 +126,6 @@ a.social-account:focus-visible { border-radius: 50%; outline-offset: -1px; }
 .social-pending { opacity: .6; }
 .collection-header { margin: 12px 0 24px; }
 .collection-header h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 46px; margin: 0; letter-spacing: -.03em; }
-.blog-filters { display: flex; gap: 24px; flex-wrap: wrap; margin: 0 0 28px; font-size: 13px; color: var(--secondary); }
-.blog-filters a { padding-bottom: 8px; }
-.blog-filters a[aria-current="page"] { color: var(--primary); border-bottom: 1px solid var(--primary); }
 .gallery-intro { margin-bottom: 28px; }
 .empty-note { color: var(--secondary); padding: 28px 0; font-size: 15px; }
 .post-content { line-height: 1.9; }

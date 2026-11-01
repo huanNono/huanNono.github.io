@@ -1,0 +1,19 @@
+<article class="blog-card">
+  {{ $hideCover := .Param "cover.hiddenInList" | default (.Param "cover.hidden") | default false }}
+  {{ partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $hideCover) }}
+  {{ if not .Date.IsZero }}<time class="blog-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ end }}
+  <h2 class="blog-card-title">
+    <a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} <small>草稿</small>{{ end }}</a>
+    {{ partial "reader-icon.html" "next" }}
+  </h2>
+  {{ with .Description | default (.Summary | plainify | htmlUnescape) }}<p class="blog-card-summary">{{ . }}</p>{{ end }}
+  <div class="blog-card-meta">
+    <span>{{ partial "reader-icon.html" "clock" }}{{ .ReadingTime }} 分钟</span>
+    <span>{{ partial "reader-icon.html" "globe" }}{{ if hasPrefix .Lang "zh" }}中文{{ else }}{{ .Language.Label | default .Lang }}{{ end }}</span>
+  </div>
+  {{ with .GetTerms "tags" }}
+  <ul class="blog-chips blog-card-tags" aria-label="文章标签">
+    {{ range . }}<li><a class="blog-chip" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}
+  </ul>
+  {{ end }}
+</article>
