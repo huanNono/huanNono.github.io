@@ -1,11 +1,11 @@
 {{ $isReader := and .IsPage (eq .Section "posts") }}
-{{ if $isReader }}<a class="reader-skip" href="#article-content">跳至正文</a>{{ end }}
+{{ if $isReader }}<a class="reader-skip" href="#article-content">Skip to content</a>{{ end }}
 <header class="header site-header{{ if $isReader }} reader-site-header{{ end }}">
-  <nav class="header-nav site-nav" aria-label="主导航">
-    <a class="icon-control home-control" href="{{ "/" | relLangURL }}" aria-label="返回首页" title="首页"{{ if .IsHome }} aria-current="page"{{ end }}>
+  <nav class="header-nav site-nav" aria-label="Main navigation">
+    <a class="icon-control home-control" href="{{ "/" | relLangURL }}" aria-label="Back to home" title="Home"{{ if .IsHome }} aria-current="page"{{ end }}>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h5v-6h4v6h5V9"/></svg>
     </a>
-    <ul id="menu" class="menu">
+    <ul id="menu" class="menu" lang="en">
       {{ range site.Menus.main }}
       {{ $active := hasPrefix $.RelPermalink .URL }}
       {{ if and (eq .URL "/posts/") (in (slice "tags" "categories" "archives") $.Section) }}{{ $active = true }}{{ end }}
@@ -13,11 +13,11 @@
       {{ end }}
     </ul>
     <div class="nav-tools">
-      <a class="icon-control" href="{{ "search/" | relURL }}" aria-label="搜索文章" title="搜索文章" accesskey="/">
+      <a class="icon-control" href="{{ "search/" | relURL }}" aria-label="Search posts" title="Search posts" accesskey="/">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
       </a>
       {{ if not site.Params.disableThemeToggle }}
-      <button id="theme-toggle" class="icon-control" type="button" accesskey="t" title="当前：白天；点击切换到黑夜" aria-label="当前：白天；点击切换到黑夜">
+      <button id="theme-toggle" class="icon-control" type="button" accesskey="t" title="Current theme: light. Switch to dark" aria-label="Current theme: light. Switch to dark">
         {{ range slice "light" "dark" "auto" }}<span class="theme-mode-icon" data-theme-icon="{{ . }}" aria-hidden="true">{{ partial "theme-icon.html" . }}</span>{{ end }}
       </button>
       {{ end }}

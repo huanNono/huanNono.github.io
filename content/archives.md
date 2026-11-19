@@ -1,5 +1,5 @@
 ---
-title: 归档
+title: Archives
 layout: archives
-summary: 按时间浏览所有文章
+summary: Browse posts by date
 ---

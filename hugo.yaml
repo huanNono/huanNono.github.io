@@ -1,10 +1,12 @@
 baseURL: "https://huannono.github.io/"
 title: "YOYO"
-locale: zh-CN
+locale: en-US
 defaultContentLanguage: zh
 hasCJKLanguage: true
 timeZone: Asia/Shanghai
 theme: PaperMod
+# Use the site’s English interface labels for its Chinese-language content.
+ignoreFiles: ['themes/PaperMod/i18n/zh\.yaml$']
 enableRobotsTXT: true
 cleanDestinationDir: true
 buildDrafts: false
@@ -24,7 +26,7 @@ params:
   description: "记录学习中的理解，也收集生活里的片段。"
   author: YOYO
   mainSections: [posts]
-  DateFormat: "2006年1月2日"
+  DateFormat: "2006-01-02"
   defaultTheme: light
   ShowReadingTime: true
   ShowWordCount: true

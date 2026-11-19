@@ -3,7 +3,7 @@
   const html = document.documentElement;
   const system = window.matchMedia("(prefers-color-scheme: dark)");
   const modes = ["light", "dark", "auto"];
-  const labels = { light: "白天", dark: "黑夜", auto: "跟随系统" };
+  const labels = { light: "light", dark: "dark", auto: "system" };
   const storageKey = "yoyo-theme-mode";
   const normalize = value => modes.includes(value) ? value : "light";
   const readPreference = () => {
@@ -21,7 +21,7 @@
     html.style.colorScheme = theme;
     const toggle = document.getElementById("theme-toggle");
     if (toggle) {
-      toggle.title = `当前：${labels[preference]}；点击切换到${labels[nextMode()]}`;
+      toggle.title = `Current theme: ${labels[preference]}. Switch to ${labels[nextMode()]}`;
       toggle.setAttribute("aria-label", toggle.title);
     }
   };

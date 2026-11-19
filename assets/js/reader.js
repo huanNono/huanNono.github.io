@@ -72,7 +72,7 @@
     const percent = Math.round(Math.min(100, Math.max(0, (y - start) / Math.max(1, end - start) * 100)));
     if (percent !== previousPercent) {
       progressText.textContent = `${percent}%`;
-      progress.setAttribute("aria-label", `阅读进度 ${percent}%，返回文章顶部`);
+      progress.setAttribute("aria-label", `${percent}% read. Back to top`);
       progress.classList.toggle("is-complete", percent === 100);
       previousPercent = percent;
     }
@@ -136,32 +136,32 @@
     const expand = block.querySelector("[data-expand-code]");
     const lines = Number(block.dataset.codeLines);
     copy.hidden = false;
-    copy.querySelector("span").textContent = "复制";
+    copy.querySelector("span").textContent = "Copy";
     copy.addEventListener("click", async () => {
       const label = copy.querySelector("span");
       try {
         const code = viewport.querySelector("code").cloneNode(true);
         code.querySelectorAll(".ln, .lnt").forEach(number => number.remove());
         await copyText(code.textContent);
-        label.textContent = "已复制";
-        copy.setAttribute("aria-label", "代码已复制");
+        label.textContent = "Copied";
+        copy.setAttribute("aria-label", "Code copied");
       } catch {
-        label.textContent = "请手动复制";
-        copy.setAttribute("aria-label", "自动复制失败，请手动选择代码复制");
+        label.textContent = "Copy manually";
+        copy.setAttribute("aria-label", "Select the code and copy it manually");
       }
-      setTimeout(() => { label.textContent = "复制"; copy.setAttribute("aria-label", "复制代码"); }, 2400);
+      setTimeout(() => { label.textContent = "Copy"; copy.setAttribute("aria-label", "Copy code"); }, 2400);
     });
     if (lines > 12) {
       block.classList.add("is-code-collapsed");
       expand.hidden = false;
       expand.setAttribute("aria-expanded", "false");
-      expand.querySelector("span").textContent = `展开全部代码（${lines} 行）`;
+      expand.querySelector("span").textContent = `Show all ${lines} lines`;
       expand.addEventListener("click", () => {
         const wasCollapsed = block.classList.contains("is-code-collapsed");
         const aboveViewport = block.getBoundingClientRect().top < 110;
         block.classList.toggle("is-code-collapsed", !wasCollapsed);
         expand.setAttribute("aria-expanded", String(wasCollapsed));
-        expand.querySelector("span").textContent = wasCollapsed ? "收起代码" : `展开全部代码（${lines} 行）`;
+        expand.querySelector("span").textContent = wasCollapsed ? "Collapse code" : `Show all ${lines} lines`;
         if (!wasCollapsed && aboveViewport) block.scrollIntoView({ behavior: "auto", block: "start" });
         schedule();
       });
@@ -173,8 +173,8 @@
   const copyStatus = root.querySelector("[data-copy-status]");
   copyLink.hidden = false;
   copyLink.addEventListener("click", async () => {
-    try { await copyText(info.dataset.articleUrl); copyStatus.textContent = "链接已复制"; }
-    catch { copyStatus.textContent = "请手动复制上方文章链接"; }
+    try { await copyText(info.dataset.articleUrl); copyStatus.textContent = "Link copied"; }
+    catch { copyStatus.textContent = "Select and copy the article link above"; }
     setTimeout(() => { copyStatus.textContent = ""; }, 3000);
   });
   const qr = root.querySelector("#reader-qr");

@@ -1,13 +1,13 @@
 <div class="photo-grid">
   {{ range .photos }}
   <figure class="photo-item">
-    <a class="photo-image" href="{{ .src | relURL }}" aria-label="查看照片：{{ .title }}">
+    <a class="photo-image" href="{{ .src | relURL }}" aria-label="View photo: {{ .title }}">
       <img src="{{ .src | relURL }}" alt="{{ .alt | default .title }}" loading="lazy" decoding="async" width="900" height="600"{{ with .position }} style="object-position: {{ . }}"{{ end }}>
     </a>
     <figcaption><span>{{ .title }}</span>{{ with .detail }}<span>{{ . }}</span>{{ end }}</figcaption>
   </figure>
   {{ else }}
-  <span class="visually-hidden">暂无摄影作品</span>
+  <span class="visually-hidden">No photos yet</span>
   {{ range seq 4 }}
   <div class="photo-item photo-pending" aria-hidden="true">
     <div class="photo-image">

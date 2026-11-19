@@ -1,0 +1,14 @@
+# English interface labels for Chinese-language posts.
+prev_page: Previous page
+next_page: Next page
+read_time:
+  other: "{{ .Count }} min read"
+words:
+  one: "1 word"
+  other: "{{ .Count }} words"
+toc: Contents
+translations: Languages
+home: Home
+edit_post: Edit
+code_copy: Copy
+code_copied: Copied

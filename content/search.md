@@ -1,6 +1,6 @@
 ---
-title: 搜索
+title: Search
 layout: search
-summary: 搜索文章标题与正文
-placeholder: 输入关键词…
+summary: Search post titles and text
+placeholder: Search posts…
 ---

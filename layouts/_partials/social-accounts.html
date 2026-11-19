@@ -1,12 +1,12 @@
-<ul class="social-accounts" aria-label="互联网账号">
+<ul class="social-accounts" aria-label="Social accounts">
   {{ range hugo.Data.social }}
   <li>
     {{ if .url }}
-    <a class="social-account" href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .name }}" aria-label="{{ .name }}（新窗口打开）">
+    <a class="social-account" href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .name }}" aria-label="{{ .name }} (opens in a new tab)">
       <span class="social-symbol" aria-hidden="true">{{ partial "social-icon.html" (dict "name" .icon) }}</span>
     </a>
     {{ else }}
-    <span class="social-account social-pending" role="img" title="{{ .name }}（待添加）" aria-label="{{ .name }}（待添加）">
+    <span class="social-account social-pending" role="img" title="{{ .name }} (coming soon)" aria-label="{{ .name }} (coming soon)">
       <span class="social-symbol" aria-hidden="true">{{ partial "social-icon.html" (dict "name" .icon) }}</span>
     </span>
     {{ end }}

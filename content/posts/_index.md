@@ -1,4 +1,4 @@
 ---
-title: 全部文章
+title: Blog
 description: 学习笔记与生活随笔
 ---

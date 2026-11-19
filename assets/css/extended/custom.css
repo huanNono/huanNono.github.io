@@ -65,17 +65,42 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--site-accent); o
 .text-link { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--secondary); white-space: nowrap; }
 .text-link:hover { color: var(--site-accent); }
 .arrow-icon { flex-shrink: 0; transition: transform .18s ease; }
-.text-link:hover .arrow-icon, .note-link:hover .arrow-icon { transform: translateX(3px); }
+.text-link:hover .arrow-icon { transform: translateX(3px); }
 .profile-more { margin-top: 6px; }
-.post-list { display: grid; gap: 14px; }
-.note-row { border: 1px solid var(--border); border-radius: 10px; background: var(--entry); transition: border-color .18s ease, background .18s ease; }
-.note-row:hover { border-color: var(--secondary); }
-.note-link { position: relative; display: block; padding: 24px 68px 25px 28px; }
-.note-meta { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; color: var(--secondary); font-size: 11px; letter-spacing: .05em; line-height: 1.5; }
-.meta-separator { color: var(--border); }
-.note-link :is(h2, h3) { font-size: 18px; font-weight: 500; line-height: 1.6; margin-top: 8px; }
-.note-link p { font-size: 13px; line-height: 1.8; color: var(--secondary); margin-top: 7px; }
-.note-arrow { position: absolute; right: 27px; top: 50%; transform: translateY(-50%); color: var(--secondary); display: flex; }
+.post-list { display: grid; gap: 12px; }
+.note-link {
+  display: grid;
+  grid-template-columns: 5.8rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 46px;
+  padding: 9px 18px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--theme);
+}
+.note-link time { font: .78rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--secondary); white-space: nowrap; }
+.note-link h3 { margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.45; overflow-wrap: anywhere; }
+.note-arrow { display: grid; place-items: center; color: var(--secondary); }
+.note-arrow svg { width: 17px; height: 17px; }
+.note-arrow .arrow-icon, .note-link:is(:hover, :focus-visible) .reader-icon { display: none; }
+.note-link:is(:hover, :focus-visible) .arrow-icon { display: block; }
+.note-link:is(:hover, :focus-visible), .posts-more:is(:hover, :focus-visible) { background: var(--code-bg); color: var(--reader-accent); }
+.note-link:is(:hover, :focus-visible) .note-arrow { color: inherit; }
+.posts-more {
+  display: flex;
+  width: fit-content;
+  margin: 12px 0 0 auto;
+  min-height: 36px;
+  padding: 4px 9px;
+  gap: 4px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--code-bg);
+  font-size: .875rem;
+}
+.posts-more svg { width: 16px; height: 16px; }
 .photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 24px; }
 .photo-item { margin: 0; min-width: 0; }
 .photo-image { display: block; position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 13px; background: var(--photo-bg); }
@@ -147,11 +172,8 @@ a.social-account:focus-visible { border-radius: 50%; outline-offset: -1px; }
   .section-heading { gap: 14px; margin-bottom: 18px; }
   .text-link { font-size: 13px; gap: 6px; }
   .profile-panel h3 { font-size: 20px; }
-  .note-link { padding: 21px 44px 22px 21px; }
-  .note-link :is(h2, h3) { font-size: 16px; }
-  .note-link p { font-size: 12px; }
-  .note-arrow { right: 17px; }
-  .note-arrow .arrow-icon { width: 17px; }
+  .note-link { grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; padding-inline: 10px; }
+  .posts-more { min-height: 44px; }
   .photo-grid { gap: 16px 14px; }
   .photo-image { aspect-ratio: 4 / 3; }
   .photo-pending svg { width: 23px; height: 23px; }
