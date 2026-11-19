@@ -54,15 +54,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--site-accent); o
 .main:has(> .homepage), .main:has(> .gallery-page) { max-width: 928px; }
 .home-identity { display: flex; align-items: center; flex-direction: column; padding: 22px 0 52px; }
 .home-avatar { display: block; width: 88px; height: 88px; border-radius: 50%; object-fit: cover; border: 3px solid var(--entry); outline: 1px solid var(--border); }
-.home-name { width: min(350px, 78%); margin: 18px 0 0; line-height: 0; }
-.lettering-art { display: block; width: 100%; height: auto; }
-/* Reference ink is #fff; keep the pale page curl as a contrasting dark detail. */
-:root[data-theme="dark"] .lettering-art { filter: grayscale(1) invert(1) brightness(1.8); }
+.home-name { margin: 18px 0 0; font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 600; line-height: 1.2; }
 .identity-line { height: 1px; width: min(34%, 120px); margin-top: 24px; background: var(--border); }
 .home-section + .home-section { margin-top: clamp(44px, 6vw, 68px); }
 .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
-.section-heading .lettered-heading { max-width: 100%; margin: 0; line-height: 0; }
-.lettered-heading .lettering-art { width: auto; height: clamp(40px, 4.5vw, 54px); max-width: 100%; }
+.section-heading h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; line-height: 1.3; }
 .profile-panel { padding: clamp(20px, 3vw, 28px); border: 1px solid var(--border); border-radius: 13px; background: var(--theme); }
 .profile-panel h3 { font-size: 23px; line-height: 1.55; font-weight: 650; margin-bottom: 12px; }
 .profile-panel p { font-size: var(--reading-text-size); line-height: 1.9; color: var(--content); margin: 0 0 12px; }
@@ -146,10 +142,9 @@ a.social-account:focus-visible { border-radius: 50%; outline-offset: -1px; }
   .main { padding: 24px 24px 48px; }
   .home-identity { padding: 12px 0 36px; }
   .home-avatar { width: 72px; height: 72px; }
-  .home-name { width: min(260px, 74%); margin-top: 14px; }
+  .home-name { margin-top: 14px; }
   .home-section + .home-section { margin-top: 40px; }
   .section-heading { gap: 14px; margin-bottom: 18px; }
-  .lettered-heading .lettering-art { height: 38px; }
   .text-link { font-size: 13px; gap: 6px; }
   .profile-panel h3 { font-size: 20px; }
   .note-link { padding: 21px 44px 22px 21px; }
