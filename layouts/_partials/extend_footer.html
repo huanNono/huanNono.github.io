@@ -2,3 +2,6 @@
 {{ $script := resources.Get "js/reader.js" | js.Build | minify | fingerprint }}
 <script defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
 {{ end }}
+
+{{ $navigation := resources.Get "js/navigation.js" | js.Build | minify | fingerprint }}
+<script defer src="{{ $navigation.RelPermalink }}" integrity="{{ $navigation.Data.Integrity }}" crossorigin="anonymous"></script>

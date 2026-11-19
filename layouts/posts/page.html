@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ $hasToc := and (.Param "showtoc") (findRE "<a " .TableOfContents) }}
 <div class="reader-page" data-reader-root>
-  <a class="reader-back" href="{{ "posts/" | relURL }}">{{ partial "reader-icon.html" "back" }}<span>返回 Blog</span></a>
+  <a data-reading-return class="reader-back" href="{{ "posts/" | relURL }}">{{ partial "reader-icon.html" "back" }}<span>返回 Blog</span></a>
   <article class="reader-layout{{ if not $hasToc }} reader-without-toc{{ end }}">
     <header class="reader-intro">
       <div class="reader-meta">
@@ -29,6 +29,7 @@
       {{ .Content }}
     </div>
     <footer class="reader-end">
+      <a data-reading-return class="reader-back reader-end-back" href="{{ "posts/" | relURL }}">{{ partial "reader-icon.html" "back" }}<span>返回 Blog</span></a>
       {{ partial "reader-info.html" . }}
       {{ if .Param "ShowPostNavLinks" }}{{ partial "reader-pagination.html" . }}{{ end }}
     </footer>

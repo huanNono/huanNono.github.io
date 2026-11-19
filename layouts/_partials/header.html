@@ -8,6 +8,7 @@
     <ul id="menu" class="menu">
       {{ range site.Menus.main }}
       {{ $active := hasPrefix $.RelPermalink .URL }}
+      {{ if and (eq .URL "/posts/") (in (slice "tags" "categories" "archives") $.Section) }}{{ $active = true }}{{ end }}
       <li><a href="{{ .URL | relLangURL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
       {{ end }}
     </ul>

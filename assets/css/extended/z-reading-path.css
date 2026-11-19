@@ -1,0 +1,32 @@
+/* Reading entry points and touch targets; retain the existing artwork and cards. */
+.posts-section { scroll-margin-top: 24px; }
+.posts-section .section-heading > .text-link {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--theme);
+  color: var(--primary);
+  font-size: 14px;
+}
+.posts-section .section-heading > .text-link:hover { border-color: var(--reader-accent); }
+.note-meta { font-size: 13px; letter-spacing: .02em; }
+.note-link :is(h2, h3) { font-weight: 600; }
+.note-link p { font-size: 15px; line-height: 1.75; }
+.note-row:focus-within { border-color: var(--reader-accent); }
+.reader-back { min-height: 44px; }
+.reader-end-back { margin-bottom: 20px; }
+@media (max-width: 700px) {
+  .site-nav .icon-control { width: 44px; height: 44px; }
+  .site-nav .menu { gap: 4px; }
+  .site-nav .menu a, .reader-site-header.reader-header-pinned .site-nav .menu a {
+    min-height: 44px; padding: 10px 4px; align-items: center; font-size: 14px;
+  }
+  .site-nav .menu a[aria-current="page"] { text-decoration-thickness: 2px; }
+  .note-link :is(h2, h3) { font-size: 18px; }
+  .note-link p { font-size: 15px; }
+  .reader-back { font-size: 14px; }
+  .blog-chip { min-height: 44px; display: flex; align-items: center; font-size: 14px; }
+  .blog-card-summary { font-size: 15px; }
+  .blog-text-link, .blog-topics-jump { min-height: 44px; display: inline-flex; align-items: center; }
+}
